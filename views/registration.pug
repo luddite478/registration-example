@@ -1,0 +1,11 @@
+html
+  head
+    title Registration
+  body
+    h1 Registration
+
+    form(method="POST" action="/registration")
+      input#email(type="text", name="email", placeholder="email")
+      input#username(type="text", name="username", placeholder="Your username")
+      input#password(type="password", name="password", placeholder="Your password")
+      input(type="submit")

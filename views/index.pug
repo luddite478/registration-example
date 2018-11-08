@@ -1,0 +1,11 @@
+html
+  head
+  body
+    a(href='registration') registration
+    h1 Hi
+    p welcome to super awesome authorising example website
+    if !username
+      h2 You have to authorise
+      include login.pug
+    else
+      include userPage.pug
