@@ -1,27 +1,21 @@
 const router = require('express').Router();
 const passport = require('passport');
-const authenticationMiddleware = require('../authentication/middleware')
+const authenticationMiddleware = require('../authentication/middleware');
 const registerUser = require('./registerUser');
+const logInUser = require('./logInUser');
+const logOutUser = require('./logOutUser');
 
-router.get('/', authenticationMiddleware, renderIndexPage);
-router.get('/registration', renderRegistrationPage);
 
-router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/'
-}))
+router.get('/', authenticationMiddleware, (req, res)=> {
+  res.render('index', { username: req.user.username })
+});
+router.get('/login', (req, res) => res.render('login'));
+router.get('/registration', (req, res) => res.render('registration'));
+
+router.post('/login', logInUser);
+router.post('/logout', logOutUser);
 router.post('/registration', registerUser);
 
 
-function renderRegistrationPage(req, res){
-  res.render('registration')
-}
-
-function renderIndexPage(req, res) {
-  const username = req.isAuthenticated()
-    ? req.user.username
-    : null
-  res.render('index', {username})
-}
 
 module.exports = router

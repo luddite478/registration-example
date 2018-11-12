@@ -1,8 +1,15 @@
 html
   head
-    title Log in
+    style 
+      include css/forms.css
   body
-    form(method="POST" action="/login")
-      input#username(type="text", name="username", placeholder="Your username")
-      input#password(type="password", name="password", placeholder="Your password")
-      input(type="submit")
+     div
+       h3 Stop right there, criminal scum!
+       form(method="POST" action="/login")
+         label(for='username') Login
+         input#username(type='text', name='username', placeholder='Your login')
+         label(for='password') Password
+         input#password(type='text', name='password', placeholder='Your password')
+         input(type='submit', value='Sign In')
+       form(method="GET" action="/registration")
+          input#signUp(type='submit', name='signUp', value='Sign Up') 

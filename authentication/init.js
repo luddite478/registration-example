@@ -10,6 +10,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((username, done) => {
   User.findOne({ username: username }, (err, user) => {
+
     if(user){
       return done(null, user);
     } else {
@@ -26,12 +27,12 @@ passport.use(new LocalStrategy(
       }
 
       if (!user) {
-        console.log('User not found')
         return done(null, false)
       }
 
       bcrypt.compare(password, user.password, (err, isValid) => {
         if (err) {
+          console.log(err);
           return done(err)
         }
         if (!isValid) {

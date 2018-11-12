@@ -1,11 +1,9 @@
 html
   head
+    style 
+      include css/index.css
   body
-    a(href='registration') registration
-    h1 Hi
-    p welcome to super awesome authorising example website
-    if !username
-      h2 You have to authorise
-      include login.pug
-    else
-      include userPage.pug
+     div
+       h3 Dear #{username} feel free to 
+       form(method="POST" action="/logout")
+         input(type='submit', value='Log Off')

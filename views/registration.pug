@@ -1,11 +1,15 @@
 html
   head
-    title Registration
+    style 
+      include css/forms.css
   body
-    h1 Registration
-
-    form(method="POST" action="/registration")
-      input#email(type="text", name="email", placeholder="email")
-      input#username(type="text", name="username", placeholder="Your username")
-      input#password(type="password", name="password", placeholder="Your password")
-      input(type="submit")
+     div
+       form(method="POST" action="/registration")
+         label(for='email') Email
+         input#email(type="text", name="email", placeholder="email")
+         label(for='username') Login
+         input#username(type="text", name="username", placeholder="Your login")
+         label(for='password') Password
+         input#username(type="text", name="password", placeholder="Your password")
+         input#signUp(type='submit', value='Submit') 
+         
